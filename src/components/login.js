@@ -16,6 +16,8 @@ export default class Login extends Component {
 
   onGoogleLoginSuccess = (res) => {
     var userData = res.profileObj;
+    console.log(userData);  
+    var userName = userData.name;
     var userEmail = userData.email;
     var userPhoto = userData.imageUrl;
     var userToken = res.tokenId;
@@ -40,13 +42,13 @@ export default class Login extends Component {
       }
       else {
         toast.success('Login Success!');
-        console.log(json);
         localStorage.setItem('token', json.token);
+        localStorage.setItem('name', userName);
+        localStorage.setItem('imgUrl', userPhoto);
+
         this.props.setAuth();
       }
     });
-
-    this.props.setImageUrl(userPhoto)
   }
 
   render() {

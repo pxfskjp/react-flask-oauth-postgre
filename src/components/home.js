@@ -6,7 +6,8 @@ import DefaultProfilePicture from '../assets/images/profile.png';
 export default class Home extends Component {
   state = {
     email: '',
-    profilePhoto: this.props.userPhoto ? this.props.userPhoto : DefaultProfilePicture
+    profilePhoto: localStorage.getItem('imgUrl') ? localStorage.getItem('imgUrl') : DefaultProfilePicture,
+    name: localStorage.getItem('name')
   }
   componentDidMount() {
     const body = {
@@ -37,9 +38,9 @@ export default class Home extends Component {
           sticky="top"
           className="d-flex justify-content-between"
         >
-          <Nav>aaa</Nav>
+          <Nav>Kinter Bot</Nav>
           <Nav className="d-flx justify-content-center align-items-center">
-            <h5>{this.state.email}</h5>
+            <h5>{this.state.name}</h5>
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic" className="bg-transparent border-0">
                 <img src={this.state.profilePhoto} width='30' height='30' className="img-thumbnail rounded-circle p-0" alt="" />
