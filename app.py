@@ -50,7 +50,6 @@ def authenticated_endpoint():
 def google_sign_in():
     request_data = request.get_json()
     token = request_data['token']
-    # print(token)
     session_user = ""
     res = {}
     try:
