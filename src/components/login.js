@@ -16,7 +16,7 @@ export default class Login extends Component {
 
   onGoogleLoginSuccess = (res) => {
     var userData = res.profileObj;
-    console.log(userData);  
+    var userId = parseInt(userData.googleId)
     var userName = userData.name;
     var userEmail = userData.email;
     var userPhoto = userData.imageUrl;
@@ -27,9 +27,11 @@ export default class Login extends Component {
     })
 
     const body = {
+      id: userId,
       login: userEmail,
       password: '',
-      token: this.state.googleToken
+      token: this.state.googleToken,
+      name: userName
     }
     fetch('/auth', {
       method: 'POST',
